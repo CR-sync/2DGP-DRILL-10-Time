@@ -36,14 +36,12 @@ def init():
     boy = Boy()
     game_world.add_object(boy, 1)
 
-    # 새 10마리 생성: 화면 너비 800, 높이 600을 기준으로 랜덤 위치 및 속도
+    # 새 10마리 생성
     for i in range(10):
         x = random.randint(50, 750)
-        y = random.randint(120, 520)
-        b = Bird(x=x, y=y, left=50, right=750)
-        # 랜덤 초기 방향과 약간의 속도 변동을 준다
+        b = Bird(x=x, left=50, right=750)
         b.face_dir = random.choice([-1, 1])
-        b.speed = RUN_SPEED_PPS * b.face_dir * random.uniform(0.8, 1.2)
+        b.speed = RUN_SPEED_PPS * b.face_dir
         game_world.add_object(b, 1)
 
 
