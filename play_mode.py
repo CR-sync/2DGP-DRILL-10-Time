@@ -39,7 +39,7 @@ def init():
     # 새 10마리 생성
     for i in range(10):
         x = random.randint(50, 750)
-        b = Bird(x=x, left=50, right=750)
+        b = Bird(x=x)
         b.face_dir = random.choice([-1, 1])
         b.speed = RUN_SPEED_PPS * b.face_dir
         game_world.add_object(b, 1)
