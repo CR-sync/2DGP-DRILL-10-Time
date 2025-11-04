@@ -25,7 +25,9 @@ class Bird:
         self.dir = 0
 
     def update(self):
-        pass
+        dt = game_framework.frame_time
+        self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * dt) % FRAMES_PER_ACTION
+        self.x += self.speed * dt
 
     def draw(self):
         pass
