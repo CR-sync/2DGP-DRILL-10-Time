@@ -15,7 +15,7 @@ FRAMES_PER_ACTION = 14
 class Bird:
     image = None
 
-    def __init__(self,x=100,y=300,left=50, right=750):
+    def __init__(self,x=100,y=500,left=50, right=1550):
         if Bird.image == None:
             Bird.image = load_image('bird_animation.png')
 
@@ -50,7 +50,16 @@ class Bird:
                 Bird.image.w // 5,
                 Bird.image.h // 3,
                 self.x,
-                self.y
-            )
+                self.y)
         else:
-            pass
+            Bird.image.clip_composite_draw(
+                ((int(self.frame) % 14) % 5) * (Bird.image.w // 5),
+                Bird.image.h - (Bird.image.h // 3),
+                Bird.image.w // 5,
+                Bird.image.h // 3,
+                0,
+                'h',
+                self.x,
+                self.y,
+                Bird.image.w // 5,
+                Bird.image.h // 3)
