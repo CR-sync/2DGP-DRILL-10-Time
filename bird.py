@@ -25,6 +25,9 @@ class Bird:
         self.dir = 0
         self.speed = RUN_SPEED_PPS * self.face_dir #방향 확인 포함
 
+        self.frame_w = Bird.image.w //5
+        self.frame_h = Bird.image.h //3
+
     def update(self):
         dt = game_framework.frame_time
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * dt) % FRAMES_PER_ACTION
