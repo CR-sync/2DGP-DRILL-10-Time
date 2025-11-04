@@ -23,7 +23,6 @@ class Bird:
         self.left, self.right = left, right
         self.frame = 0
         self.face_dir = 1
-        self.dir = 0
         self.speed = RUN_SPEED_PPS * self.face_dir #방향 확인 포함
 
         self.frame_w = Bird.image.w //5
@@ -46,8 +45,8 @@ class Bird:
     def draw(self):
         if self.face_dir == 1:  # right
             Bird.image.clip_draw(
-                ((int(self.frame) % 14) % 5) * (Bird.image.w // 5),
-                Bird.image.h * (Bird.image.h // 3),
+                ((int(self.frame) % FRAMES_PER_ACTION) % 5) * (Bird.image.w // 5),
+                Bird.image.h - (Bird.image.h // 3),
                 Bird.image.w // 5,
                 Bird.image.h // 3,
                 self.x,
@@ -55,5 +54,3 @@ class Bird:
             )
         else:
             pass
-            # self.Bird.image.clip_draw(int(self.Bird.frame) * 100, 200, 100, 100, self.Bird.x, self.Bird.y)
-
