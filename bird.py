@@ -44,8 +44,16 @@ class Bird:
             self.speed = RUN_SPEED_PPS * self.face_dir
 
     def draw(self):
-        if self.bird.face_dir == 1:  # right
-            self.bird.image.clip_draw(int(self.bird.frame) * 100, 300, 100, 100, self.bird.x, self.bird.y)
+        if self.face_dir == 1:  # right
+            Bird.image.clip_draw(
+                ((int(self.frame) % 14) % 5) * (Bird.image.w // 5),
+                Bird.image.h * (Bird.image.h // 3),
+                Bird.image.w // 5,
+                Bird.image.h // 3,
+                self.x,
+                self.y
+            )
         else:
-            self.bird.image.clip_draw(int(self.bird.frame) * 100, 200, 100, 100, self.bird.x, self.bird.y)
+            pass
+            # self.Bird.image.clip_draw(int(self.Bird.frame) * 100, 200, 100, 100, self.Bird.x, self.Bird.y)
 
