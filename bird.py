@@ -4,4 +4,8 @@ import game_framework
 
 
 class bird:
-    pass
+    image = None
+
+    def __init__(self):
+        if bird.image == None:
+            bird.image = load_image('bird_animation.png')
