@@ -20,6 +20,7 @@ class Bird:
             Bird.image = load_image('bird_animation.png')
 
         self.x, self.y = x, y
+        self.left, self.right = left, right
         self.frame = 0
         self.face_dir = 1
         self.dir = 0
@@ -32,6 +33,15 @@ class Bird:
         dt = game_framework.frame_time
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * dt) % FRAMES_PER_ACTION
         self.x += self.speed * dt
+
+        if self.x < self.left:
+            self.x = self.left
+            self.face_dir = 1
+            self.speed = RUN_SPEED_PPS * self.face_dir
+        elif self.x > self.right:
+            self.x = self.right
+            self.face_dir = -1
+            self.speed = RUN_SPEED_PPS * self.face_dir
 
     def draw(self):
         pass
